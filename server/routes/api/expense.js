@@ -69,6 +69,7 @@ router.put('/:id', async (req,res) => {
         res.status(200).json({msg: "No file sent"}).send();
     } else {
         // Object is NOT empty
+        updateexpenses.modifiedAt = new Date();
         await expenses.update({$or: [{_id: new mongodb.ObjectID(req.params.id)}]},
         { $set: updateexpenses});
 
@@ -76,11 +77,7 @@ router.put('/:id', async (req,res) => {
     }
     
     console.log("test",updateexpenses )
-    // if(Object.keys(updateexpenses).length === 0 && updateexpenses.constructor === Object) {
-        
-    //     console.log("aaaa");
-
-    // }
+    
 })
 
 async function loadExpenseCollection() {
