@@ -35,20 +35,52 @@ router.delete('/:id', async (req, res) => {
 });
 
 //Edit Expenses
-
 router.put('/:id', async (req,res) => {
     const expenses = await loadExpenseCollection();
 
-    await expenses.update({$or: [{_id: new mongodb.ObjectID(req.params.id)}]},
-    { $set: {
-            expensename: req.body.expensename,
-            expensedescrption: req.body.expensedescrption,
-            expenseamount: req.body.expenseamount,
-            dateofexpense: req.body.dateofexpense,
-            modifiedAt: new Date() 
+    const isEmpty = (obj) => {
+        for(var key in obj) {
+            if(obj.hasOwnProperty(key))
+                return false;
         }
- });
-   res.status(200).json({msg: "Updated"}).send();
+        return true;
+    }
+
+    const updateexpenses = {}
+    // console.log("ok",req.body, req.body.expensename)
+    if(typeof req.body.expensename !== "undefined"){
+        updateexpenses.expensename = req.body.expensename
+    }
+
+    if(typeof req.body.expensedescrption !== "undefined"){
+        updateexpenses.expensedescrption = req.body.expensedescrption
+    }
+
+    if(typeof req.body.expenseamount !== "undefined"){
+        updateexpenses.expenseamount = req.body.expenseamount
+    }
+
+    if(typeof req.body.dateofexpense !== "undefined"){
+        updateexpenses.dateofexpense = req.body.dateofexpense
+    }
+
+    if(isEmpty(updateexpenses)) {
+        // Object is empty (Would return true in this example)
+        res.status(200).json({msg: "No file sent"}).send();
+    } else {
+        // Object is NOT empty
+        await expenses.update({$or: [{_id: new mongodb.ObjectID(req.params.id)}]},
+        { $set: updateexpenses});
+
+    res.status(200).json({msg: "Updated"}).send();
+    }
+    
+    console.log("test",updateexpenses )
+    // if(Object.keys(updateexpenses).length === 0 && updateexpenses.constructor === Object) {
+        
+    //     console.log("aaaa");
+
+    // }
 })
 
 async function loadExpenseCollection() {
