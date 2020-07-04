@@ -36,11 +36,15 @@
         <button v-on:click="deleteExpense(expen._id)">Delete</button>
         </div>
         -->
-        <table cellspacing="0">
-          <th>Expense Name</th>
-          <th>Expense Desc</th>
-          <th>Expense Amount</th>
-          <th>Date of Expense</th>
+        <table cellspacing="0" class="table table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Expense Name</th>
+              <th scope="col">Expense Desc</th>
+              <th scope="col">Expense Amount</th>
+              <th scope="col">Date of Expense</th>             
+            </tr>
+          </thead>
           <tr 
             v-for="(expen, index) in expense"
             v-bind:item="expen"
@@ -52,8 +56,8 @@
           <td>{{expen.expenseamount}}</td>
           <td>{{expen.dateofexpense}}</td>
           
-          <td><router-link :to="{ name: 'UpdateExpense', params: { id: expen._id }}">Edit</router-link></td>
-          <td><button v-on:click="deleteExpense(expen._id)">Delete</button></td>
+          <td class="btn btn-primary"><router-link :to="{ name: 'UpdateExpense', params: { id: expen._id }}" class="link">Edit</router-link></td>
+          <td><button v-on:click="deleteExpense(expen._id)" class="btn btn-primary">Delete</button></td>
           </tr>
         </table>
       
@@ -102,30 +106,16 @@ export default {
         
       });
       this.sumExpenseAmount = sum;
-      // console.log("test", this.expense, sum, this.sumExpenseAmount);
     } catch (err) {
       this.error = err.message;
     }
   },
   methods: {
-  /** 
-   *     async createExpense() {
-      await ExpenseService.insertExpenses(
-        this.expensename,
-        this.expensedescrption,
-        this.expenseamount,
-        this.dateofexpense
-      );
-      this.expense = await ExpenseService.getExpenses();
-    },
-  */
     async deleteExpense(id) {
-      console.log('Delete', id)
       await ExpenseService.deleteExpenses(id);
       this.expense = await ExpenseService.getExpenses();
     },
     async editExpense(id) {
-      console.log('Edit', id)
       await ExpenseService.updateExpenses(id);
       this.expense = await ExpenseService.getExpenses();
     }
@@ -170,5 +160,98 @@ a {
 }
 .total-block{
   background-color: azure;
+}
+/*****  TABLE CSS ***/
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #dee2e6;
+}
+
+.table-bordered thead th,
+.table-bordered thead td {
+  border-bottom-width: 2px;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+.table .thead-light th {
+  color: #495057;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+.table-dark {
+  color: #fff;
+  background-color: #343a40;
+}
+
+/**LINK ALERT ***/
+.alert-primary {
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}
+.alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+/**Button ***/
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #eb2e6d;
+  border-color: #0062cc;
+}
+/***LINk */
+.link{
+  padding:2px;
+  text-decoration: none;
+  font-weight: 100;
+  color:#fff;
 }
 </style>
