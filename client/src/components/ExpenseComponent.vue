@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1>Expenses</h1>
-    <!----- Create Expense Here --->
+    <!----- Create Expense Here 
     <div class="add-expense">
       <label for="create-expense" class="label-edit">Add New Expense</label>
       <input type="text" id="create-expense" v-model="expensename" placeholder="Expense Name">
@@ -10,6 +10,7 @@
       <input type="date" id="create-expense" v-model="dateofexpense" placeholder="Expense Date">
       <button v-on:click="createExpense">Add</button>
     </div>
+    --->
     <hr>
     <p class="error" v-if="error"> {{error}} </p>
     <div class="expenses-container">
@@ -24,7 +25,8 @@
         <p class="expensename"><strong class="higlighted">Expense Description</strong>: {{expen.expensedescrption}} </p>
         <p class="expensename"><strong class="higlighted">Expense Amount</strong>: {{expen.expenseamount}} </p>
         <p class="expensename"><strong class="higlighted">Date</strong>: {{expen.dateofexpense}} </p>
-        <a href="/edit"><button>Edit</button></a>
+        <router-link to="/update">Edit Expense</router-link>
+        <!-- <a href="/edit"><button>Edit</button></a> -->
         <button v-on:click="deleteExpense(expen._id)">Delete</button>
       </div>
     </div>
@@ -50,6 +52,7 @@ export default {
       totalexpense: ''
     }
   },
+
   async created() {
     try {
       this.expense = await ExpenseService.getExpenses();
@@ -58,7 +61,8 @@ export default {
     }
   },
   methods: {
-    async createExpense() {
+  /** 
+   *     async createExpense() {
       await ExpenseService.insertExpenses(
         this.expensename,
         this.expensedescrption,
@@ -67,6 +71,7 @@ export default {
       );
       this.expense = await ExpenseService.getExpenses();
     },
+  */
     async deleteExpense(id) {
       await ExpenseService.deleteExpenses(id);
       this.expense = await ExpenseService.getExpenses();
