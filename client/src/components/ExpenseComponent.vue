@@ -56,7 +56,7 @@
           <td>{{expen.expenseamount}}</td>
           <td>{{expen.dateofexpense}}</td>
           
-          <td class="btn btn-primary"><router-link :to="{ name: 'UpdateExpense', params: { id: expen._id }}" class="link">Edit</router-link></td>
+          <td><button class="btn btn-primary"><router-link :to="{ name: 'UpdateExpense', params: { id: expen._id }}" class="link">Edit</router-link></button></td>
           <td><button v-on:click="deleteExpense(expen._id)" class="btn btn-primary">Delete</button></td>
           </tr>
         </table>
@@ -65,8 +65,8 @@
     </div>
 
     <div class="total">
-      <h1>Total Expense</h1>
-      <div class="total-block">
+      <!-- <h1 class=" display-1 badge badge-info ">Total Expense</h1> -->
+      <div class="display-4 badge-info">
         <p><strong>Total: {{ sumExpenseAmount }}</strong></p>
         
       </div>
@@ -253,5 +253,33 @@ a {
   text-decoration: none;
   font-weight: 100;
   color:#fff;
+}
+/***BADGE*****/
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.badge-info {
+  color: #fff;
+  background-color: #17a2b8;
+}
+/***DISPLAY ****/
+.display-1 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+.display-4 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
 }
 </style>
