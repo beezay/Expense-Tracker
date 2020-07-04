@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <router-link to="/">Home</router-link>
-    <router-link to="/add">New Expense</router-link>
+    <router-link to="/" class="link">Home</router-link>
+    <router-link to="/add" class="link">New Expense</router-link>
 
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <router-view />
@@ -24,5 +24,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.link{
+  padding:20px;
+  text-decoration: none;
+  font-weight: 800;
 }
 </style>

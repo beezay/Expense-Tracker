@@ -3,11 +3,13 @@
     <h1>Add Expense Form Here!!!!!</h1>
     <div class="add-expense">
       <h3 class="add-heading">Add New Expense Here</h3>
+      <form @submit.prevent="createExpense" method="POST">
       <input type="text" id="create-expense" class="input" v-model="expensename" placeholder="Expense Name">
       <input type="text" id="create-expense"  class="input" v-model="expensedescrption" placeholder="Expense Description">
       <input type="text" id="create-expense" class="input" v-model="expenseamount" placeholder="Expense Amount">
       <input type="date" id="create-expense" class="input" v-model="dateofexpense" placeholder="Expense Date">
-      <button v-on:click="createExpense" class="button">Add</button>
+      <button type="submit" class="button">Add</button>
+      </form>
     </div>
     <!--/** 
     <form @submit.prevent="saveContact" method="POST" >
@@ -75,9 +77,14 @@ export default {
         this.expensedescrption,
         this.expenseamount,
         this.dateofexpense
-      );
-    }
+      )
+        .then(function () {
+            
+           window.location.href = "/"
+        }
+        )
   }
+}
 }
 </script>
 

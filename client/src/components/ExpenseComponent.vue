@@ -25,7 +25,7 @@
         <p class="expensename"><strong class="higlighted">Expense Description</strong>: {{expen.expensedescrption}} </p>
         <p class="expensename"><strong class="higlighted">Expense Amount</strong>: {{expen.expenseamount}} </p>
         <p class="expensename"><strong class="higlighted">Date</strong>: {{expen.dateofexpense}} </p>
-        <router-link to="/update">Edit Expense</router-link>
+        <router-link to="/update" class="link">Edit Expense</router-link>
         <!-- <a href="/edit"><button>Edit</button></a> -->
         <button v-on:click="deleteExpense(expen._id)">Delete</button>
       </div>
@@ -111,5 +111,8 @@ a {
 }
 .label-edit{
   font-weight: 200;
+}
+.link{
+  text-decoration: none;
 }
 </style>
