@@ -1,24 +1,18 @@
 import Vue from 'vue'
+import vuerouter from 'vue-router';
 import App from './App.vue'
+import router from './router'
 
 Vue.config.productionTip = false
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+// new Vue({
+//   render: h => h(App),
+// }).$mount('#app')
 
-/*** 
+Vue.use(vuerouter);
+
 new Vue({
   el: '#app',
-  data () {
-    return {
-      info: null
-    }
-  },
-  mounted () {
-    axios
-      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-      .then(response => (this.info = response))
-  }
+  router,
+  render: h => h(App)
 })
-***/

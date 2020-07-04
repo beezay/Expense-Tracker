@@ -18,13 +18,14 @@
         v-bind:item="expen"
         v-bind:index="index"
         v-bind:key="expen._id"
-        v-on:dblclick="deleteExpense(expen._id)"
       >
         <!-- {{`${expen.createdAt.getDate()}/${expen.createdAt.getMonth()}/${expen.createdAt.getFullYear()}`}} -->
         <p class="expensename"><strong class="higlighted">Expense Name</strong>: {{expen.expensename}} </p>
         <p class="expensename"><strong class="higlighted">Expense Description</strong>: {{expen.expensedescrption}} </p>
         <p class="expensename"><strong class="higlighted">Expense Amount</strong>: {{expen.expenseamount}} </p>
         <p class="expensename"><strong class="higlighted">Date</strong>: {{expen.dateofexpense}} </p>
+        <a href="/edit"><button>Edit</button></a>
+        <button v-on:click="deleteExpense(expen._id)">Delete</button>
       </div>
     </div>
     <div class="total">
@@ -70,6 +71,10 @@ export default {
       await ExpenseService.deleteExpenses(id);
       this.expense = await ExpenseService.getExpenses();
     },
+    async editExpense(id) {
+      await ExpenseService.updateExpenses(id);
+      this.expense = await ExpenseService.getExpenses();
+    }
   }
 }
 </script>
