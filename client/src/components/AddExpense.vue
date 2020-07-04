@@ -2,21 +2,21 @@
 <div>
     <div class="add-expense">
       <h3 class="add-heading">Add New Expense Here</h3>
-      <form @submit.prevent="createExpense" method="POST" class="form-inline">
+     <form @submit.prevent="createExpense" method="POST" class="form-inline">
    
-    <div class="form-group">
-        <input type="text" id="create-expense" class="form-control" v-model="expensename" placeholder="Expense Name" required>
-    </div>
-    <div class="form-group">
-        <input type="text" id="create-expense"  class="form-control" v-model="expensedescrption" placeholder="Expense Description">
-    </div>    
-    <div class="form-group">
-        <input type="text" id="create-expense" class="form-control" v-model="expenseamount" placeholder="Expense Amount" required>
-    </div>
-    <div class="form-group">
-        <input type="date" id="create-expense" class="form-control" v-model="dateofexpense" placeholder="Expense Date" required>
-    </div> 
-      <button type="submit" class="btn btn-success">Add</button>
+        <div class="form-group">
+            <input type="text" id="create-expense" class="form-control" v-model="expensename" placeholder="Expense Name" required>
+        </div>
+        <div class="form-group">
+            <input type="text" id="create-expense"  class="form-control" v-model="expensedescrption" placeholder="Expense Description">
+        </div>    
+        <div class="form-group">
+            <input type="text" id="create-expense" class="form-control" v-model="expenseamount" placeholder="Expense Amount" required>
+        </div>
+        <div class="form-group">
+            <input type="date" id="create-expense" class="form-control" v-model="dateofexpense" placeholder="Expense Date" required>
+        </div> 
+        <button type="submit" class="btn btn-success">Add</button>
       </form>
     </div> 
 </div>
