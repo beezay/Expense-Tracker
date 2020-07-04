@@ -8,7 +8,14 @@ const router = express.Router();
 //GET expense
 router.get('/', async(req, res) => {
     const expenses = await loadExpenseCollection();
+
     res.send(await expenses.find({}).toArray());
+});
+
+router.get('/:id', async(req, res) => {
+    const expenses = await loadExpenseCollection();
+    res.send(await expenses.find(
+        {$or: [{_id: new mongodb.ObjectID(req.params.id)}]}).toArray());
 });
 
 //Add Expense
@@ -35,7 +42,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 //Edit Expenses
-router.put('/:id', async (req,res) => {
+router.post('/:id', async (req,res) => {
     const expenses = await loadExpenseCollection();
 
     const isEmpty = (obj) => {

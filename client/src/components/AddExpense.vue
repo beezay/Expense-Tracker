@@ -4,10 +4,10 @@
     <div class="add-expense">
       <h3 class="add-heading">Add New Expense Here</h3>
       <form @submit.prevent="createExpense" method="POST">
-      <input type="text" id="create-expense" class="input" v-model="expensename" placeholder="Expense Name">
+      <input type="text" id="create-expense" class="input" v-model="expensename" placeholder="Expense Name" required>
       <input type="text" id="create-expense"  class="input" v-model="expensedescrption" placeholder="Expense Description">
-      <input type="text" id="create-expense" class="input" v-model="expenseamount" placeholder="Expense Amount">
-      <input type="date" id="create-expense" class="input" v-model="dateofexpense" placeholder="Expense Date">
+      <input type="text" id="create-expense" class="input" v-model="expenseamount" placeholder="Expense Amount" required>
+      <input type="date" id="create-expense" class="input" v-model="dateofexpense" placeholder="Expense Date" required>
       <button type="submit" class="button">Add</button>
       </form>
     </div>
@@ -72,12 +72,13 @@ export default {
   },
   methods: {
     async createExpense() {
-      await ExpenseService.insertExpenses(
-        this.expensename,
-        this.expensedescrption,
-        this.expenseamount,
-        this.dateofexpense
-      )
+        const data= {
+        "expensename": this.expensename,
+        "expensedescription": this.expensedescrption,
+        "expenseamount": this.expenseamount,
+        "dateofexpense": this.dateofexpense
+        }
+      await ExpenseService.insertExpenses(data)
         .then(function () {
             
            window.location.href = "/"
