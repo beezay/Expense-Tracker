@@ -40,12 +40,12 @@ class ExpenseService {
       }
 
     //Create Expense
-    static insertExpenses(data) {
+    static insertExpense(data) {
         return axios.post(url, data);
     }
 
     //Edit Expense
-    static updateExpenses(id, expensename, expensedescrption, expenseamount, dateofexpense) {
+    static updateExpense(id, expensename, expensedescrption, expenseamount, dateofexpense) {
         // console.log('test', id)
         return axios.post(`${url}${id}`, {
             expensename,
@@ -56,8 +56,8 @@ class ExpenseService {
     }
 
     //Delete Expense
-    static deleteExpenses(id) {
-        // console.log('Deleted', id)
+    static deleteExpense(id) {
+        console.log('Deleted', id)
         return axios.delete(`${url}${id}`);
     }
 }

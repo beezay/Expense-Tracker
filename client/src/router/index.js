@@ -19,7 +19,7 @@ export default new Router({
             component: AddExpense
         },
         {
-            path: '/update/:id',
+            path: '/:id',
             name: 'UpdateExpense',
             component: UpdateExpense
         }

@@ -49,7 +49,7 @@ export default {
         "expenseamount": this.expenseamount,
         "dateofexpense": this.dateofexpense
         }
-      await ExpenseService.insertExpenses(data)
+      await ExpenseService.insertExpense(data)
         .then(function () {
             
            window.location.href = "/"

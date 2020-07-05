@@ -70,7 +70,7 @@
           <td>{{expen.dateofexpense}}</td>
           
           <td><button class="btn-margin btn btn-primary "><router-link :to="{ name: 'UpdateExpense', params: { id: expen._id }}" class="link">Edit</router-link></button>
-          <button v-on:click="deleteExpense(expen._id)" class="btn-margin btn btn-danger ">Delete</button></td>
+          <button v-on:click="removeExpense(expen._id)" class="btn-margin btn btn-danger ">Delete</button></td>
           </tr>
         </table>
       
@@ -125,8 +125,8 @@ export default {
     }
   },
   methods: {
-    async deleteExpense(id) {
-      await ExpenseService.deleteExpenses(id);
+    async removeExpense(id) {
+      await ExpenseService.deleteExpense(id);
       this.expense = await ExpenseService.getExpenses();
     },
     async onChange(event) {

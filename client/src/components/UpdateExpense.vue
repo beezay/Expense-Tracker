@@ -47,7 +47,7 @@
     import ExpenseService from '../ExpenseService'; 
 
 export default {
-        name: 'AddExpense',
+        name: 'UpdateExpense',
     data() {
         return {
         expense: [],
@@ -67,7 +67,7 @@ export default {
       this.expensedescrption = data["0"].expensedescrption ? data["0"].expensedescrption : '';
       this.expenseamount = data["0"].expenseamount ? data["0"].expenseamount : '';
       this.dateofexpense = data["0"].dateofexpense ? data["0"].dateofexpense : '';
-      // console.log("fdaf", this.expense,data, "jgjg", data["0"].expensename)
+      console.log("fdaf", this.expense,data, "jgjg", data["0"].expensename)
     } catch (err) {
       // console.log("eerr", err);
       this.error = err.message;
@@ -78,7 +78,7 @@ export default {
       //   console.log('Edit',this.$route.params.id)
       // await ExpenseService.updateExpenses(this.$route.params.id);
       // this.expense = await ExpenseService.getExpenses();
-      await ExpenseService.updateExpenses(
+      await ExpenseService.updateExpense(
         this.$route.params.id,
         this.expensename,
         this.expensedescrption,
