@@ -2,7 +2,7 @@
   <div class="container">
 
   <h1>Filter By</h1>
-
+    
     <div>
     
     <h1>Expenses</h1>
@@ -94,7 +94,7 @@ export default {
 
   async created() {
     try {
-      this.expense = await ExpenseService.getExpenses();
+      this.expense = await ExpenseService.getExpenses(this.$route.query.date);
       const data = this.expense;
       // console.log('test', data)
       let sum = 0

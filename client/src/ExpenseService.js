@@ -1,13 +1,12 @@
 import axios from 'axios';
 
 const url = 'http://localhost:5000/';
-
 class ExpenseService {
     //GET Expense
-    static getExpenses() {
+    static getExpenses(date) {
       
       return  new Promise((resolve, reject) => {
-        axios.get(url).then((res) => {
+        axios.get(url + '?date=' + date).then((res) => {
             const data = res.data;
             resolve(
                 data.map(expense => ({
