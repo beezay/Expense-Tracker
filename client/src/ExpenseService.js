@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'api/expense';
+const url = 'api/expense/';
 class ExpenseService {
     //GET Expense
     static getExpenses(date) {
