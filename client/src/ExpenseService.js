@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/';
+const url = 'api/expense';
 class ExpenseService {
     //GET Expense
     static getExpenses(date) {

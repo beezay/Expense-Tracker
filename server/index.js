@@ -10,7 +10,7 @@ app.use(cors());
 
 const expenses = require('./routes/api/expense');
 
-app.use('/', expenses);
+app.use('/api/expense', expenses);
 
 const port = process.env.PORT || 5000;
 
