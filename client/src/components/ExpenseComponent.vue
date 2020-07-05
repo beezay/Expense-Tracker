@@ -96,7 +96,7 @@ export default {
     try {
       this.expense = await ExpenseService.getExpenses();
       const data = this.expense;
-      console.log('test', data)
+      // console.log('test', data)
       let sum = 0
 
       data.forEach(function (item) {
@@ -113,10 +113,6 @@ export default {
   methods: {
     async deleteExpense(id) {
       await ExpenseService.deleteExpenses(id);
-      this.expense = await ExpenseService.getExpenses();
-    },
-    async editExpense(id) {
-      await ExpenseService.updateExpenses(id);
       this.expense = await ExpenseService.getExpenses();
     }
   }

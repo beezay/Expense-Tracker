@@ -47,7 +47,7 @@ class ExpenseService {
 
     //Edit Expense
     static updateExpenses(id, expensename, expensedescrption, expenseamount, dateofexpense) {
-        console.log('test', id)
+        // console.log('test', id)
         return axios.post(`${url}${id}`, {
             expensename,
             expensedescrption,
@@ -58,7 +58,7 @@ class ExpenseService {
 
     //Delete Expense
     static deleteExpenses(id) {
-        console.log('Deleted', id)
+        // console.log('Deleted', id)
         return axios.delete(`${url}${id}`);
     }
 }

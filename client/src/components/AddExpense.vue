@@ -45,7 +45,7 @@ export default {
     async createExpense() {
         const data= {
         "expensename": this.expensename,
-        "expensedescription": this.expensedescrption,
+        "expensedescrption": this.expensedescrption,
         "expenseamount": this.expenseamount,
         "dateofexpense": this.dateofexpense
         }

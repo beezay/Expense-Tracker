@@ -67,9 +67,9 @@ export default {
       this.expensedescrption = data["0"].expensedescrption ? data["0"].expensedescrption : '';
       this.expenseamount = data["0"].expenseamount ? data["0"].expenseamount : '';
       this.dateofexpense = data["0"].dateofexpense ? data["0"].dateofexpense : '';
-      console.log("fdaf", this.expense,data, "jgjg", data["0"].expensename)
+      // console.log("fdaf", this.expense,data, "jgjg", data["0"].expensename)
     } catch (err) {
-      console.log("eerr", err);
+      // console.log("eerr", err);
       this.error = err.message;
     }
   },
