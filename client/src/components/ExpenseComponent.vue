@@ -1,8 +1,20 @@
 <template>
   <div class="container">
 
-  <h1>Filter By</h1>
-    
+  <!-- <h1>Filter By</h1> -->
+      <div class="cascading-dropdown">
+            <div class="dropdown">
+                <span>Date Filter:</span>
+                <select @change="onChange($event)">
+                    <option>--- Select Date ---</option>
+                    <option value="TODAY">Today</option>
+                    <option value="SEVENDAYS">Last 7 Days</option>
+                    <option value="30DAYS">Last 30 Days</option>
+
+                </select>
+            </div>
+           
+        </div>
     <div>
     
     <h1>Expenses</h1>
@@ -88,7 +100,8 @@ export default {
       expenseamount: '',
       dateofexpense: '',
       totalexpense: '',
-      sumExpenseAmount: 0
+      sumExpenseAmount: 0,
+      selectedDate: ''
     }
   },
 
@@ -114,6 +127,26 @@ export default {
     async deleteExpense(id) {
       await ExpenseService.deleteExpenses(id);
       this.expense = await ExpenseService.getExpenses();
+    },
+    async onChange(event) {
+      console.log(event.target.value);
+      this.selectedDate = event.target.value;
+      try {
+      this.expense = await ExpenseService.getExpenses(this.selectedDate);
+      const data = this.expense;
+      // console.log('test', data)
+      let sum = 0
+
+      data.forEach(function (item) {
+        if(!isNaN(item.expenseamount)){
+          sum = sum + parseFloat(item.expenseamount)
+        }
+        
+      });
+      this.sumExpenseAmount = sum;
+    } catch (err) {
+      this.error = err.message;
+    }
     }
   }
 }
@@ -277,5 +310,16 @@ a {
   font-size: 3.5rem;
   font-weight: 300;
   line-height: 1.2;
+}
+/***FILTER */
+.dropdown {
+    margin: 10px 0;
+    padding: 10px 0;
+    border-bottom: 1px solid #DDD;
+}
+
+.dropdown span {
+    display:inline-block;
+    width: 80px;
 }
 </style>
