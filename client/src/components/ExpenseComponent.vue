@@ -55,6 +55,7 @@
               <th scope="col">Expense Desc</th>
               <th scope="col">Expense Amount</th>
               <th scope="col">Date of Expense</th>             
+              <th scope="col">Action</th>             
             </tr>
           </thead>
           <tr 
@@ -68,8 +69,8 @@
           <td>{{expen.expenseamount}}</td>
           <td>{{expen.dateofexpense}}</td>
           
-          <td><button class="btn btn-primary"><router-link :to="{ name: 'UpdateExpense', params: { id: expen._id }}" class="link">Edit</router-link></button></td>
-          <td><button v-on:click="deleteExpense(expen._id)" class="btn btn-primary">Delete</button></td>
+          <td><button class="btn-margin btn btn-primary "><router-link :to="{ name: 'UpdateExpense', params: { id: expen._id }}" class="link">Edit</router-link></button>
+          <button v-on:click="deleteExpense(expen._id)" class="btn-margin btn btn-danger ">Delete</button></td>
           </tr>
         </table>
       
@@ -247,6 +248,9 @@ a {
   border-radius: 0.25rem;
 }
 /**Button ***/
+.btn-margin{
+  margin-left: 10px;
+}
 .btn {
   display: inline-block;
   font-weight: 400;
@@ -273,9 +277,22 @@ a {
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #eb2e6d;
+  background-color: #08247ed3;
   border-color: #0062cc;
 }
+
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
 /***LINk */
 .link{
   padding:2px;
